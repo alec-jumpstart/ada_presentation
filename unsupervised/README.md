@@ -2,5 +2,5 @@
 1. set up a virtualenv `python -m venv venv`
 2. activate your virtualenv `source ./venv/bin/activate`
 3. upgrade pip `python -m pip install --upgrade pip`
-4. install the necessary libraries `pip install sklearn matplotlib numpy` (may be slow)
-5. python 
+4. install the necessary libraries `pip install -r requirements.txt` (may be slow)
+5. `python cluster_iris.py`
