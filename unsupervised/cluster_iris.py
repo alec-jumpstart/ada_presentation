@@ -4,7 +4,8 @@ import numpy as np
 from sklearn import datasets
 from sklearn.cluster import KMeans
 
-from utils import axis_3d, label_axes_with_actual, scatter_axes
+from utils import (add_axis_labels, axis_3d, label_axes_with_actual,
+                   scatter_axes)
 
 iris_dataset = datasets.load_iris()
 x = iris_dataset.data
@@ -29,9 +30,7 @@ labels = estimator.labels_
 scatter_axes(axes, x, y, labels)
 
 # label axes and title
-axes.set_xlabel('Petal width (cm)')
-axes.set_ylabel('Sepal length (cm)')
-axes.set_zlabel('Petal length (cm)')
+add_axis_labels(axes)
 figure_1.add_axes(axes)
 
 # Plot the correct labels for reference
@@ -42,9 +41,7 @@ label_axes_with_actual(axes, x, y)
 
 scatter_axes(axes, x, y, labels)
 
-axes.set_xlabel('Petal width (cm)')
-axes.set_ylabel('Sepal length (cm)')
-axes.set_zlabel('Petal length (cm)')
+add_axis_labels(axes)
 figure_2.add_axes(axes)
 
 plt.show()
