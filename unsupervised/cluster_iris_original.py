@@ -8,7 +8,7 @@ from sklearn.cluster import KMeans
 np.random.seed(5)
 
 iris = datasets.load_iris()
-X = iris.data
+x = iris.data
 y = iris.target
 
 estimators = [('k_means_iris_8', KMeans(n_clusters=8)),
@@ -21,10 +21,10 @@ titles = ['8 clusters', '3 clusters', '3 clusters, bad initialization']
 for name, est in estimators:
     fig = plt.figure(fignum, figsize=(4, 3))
     ax = Axes3D(fig, rect=[0, 0, .95, 1], elev=48, azim=134, auto_add_to_figure=False)
-    est.fit(X)
+    est.fit(x)
     labels = est.labels_
 
-    ax.scatter(X[:, 3], X[:, 0], X[:, 2],
+    ax.scatter(x[:, 3], x[:, 0], x[:, 2],
                c=labels.astype(float), edgecolor='k')
 
     ax.w_xaxis.set_ticklabels([])
@@ -45,14 +45,14 @@ ax = Axes3D(fig, rect=[0, 0, .95, 1], elev=48, azim=134, auto_add_to_figure=Fals
 for name, label in [('Setosa', 0),
                     ('Versicolour', 1),
                     ('Virginica', 2)]:
-    ax.text3D(X[y == label, 3].mean(),
-              X[y == label, 0].mean(),
-              X[y == label, 2].mean() + 2, name,
+    ax.text3D(x[y == label, 3].mean(),
+              x[y == label, 0].mean(),
+              x[y == label, 2].mean() + 2, name,
               horizontalalignment='center',
               bbox=dict(alpha=.2, edgecolor='w', facecolor='w'))
 # Reorder the labels to have colors matching the cluster results
 y = np.choose(y, [1, 2, 0]).astype(float)
-ax.scatter(X[:, 3], X[:, 0], X[:, 2], c=y, edgecolor='k')
+ax.scatter(x[:, 3], x[:, 0], x[:, 2], c=y, edgecolor='k')
 
 ax.w_xaxis.set_ticklabels([])
 ax.w_yaxis.set_ticklabels([])
