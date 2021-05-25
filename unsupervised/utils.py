@@ -17,3 +17,8 @@ def label_axes_with_actual(axes, x, y):
 
 def scatter_axes(axes, x, y, labels):
     axes.scatter(x[:, 3], x[:, 0], x[:, 2], c=labels.astype(float), edgecolor='k')
+
+def add_axis_labels(axes):
+    axes.set_xlabel('Petal width (cm)')
+    axes.set_ylabel('Sepal length (cm)')
+    axes.set_zlabel('Petal length (cm)')
