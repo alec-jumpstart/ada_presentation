@@ -3,8 +3,10 @@ import matplotlib.pyplot as plt
 from sklearn import datasets, metrics, svm
 from sklearn.model_selection import train_test_split
 
+# load the MNIST dataset
 digits = datasets.load_digits()
 
+# create a 1x10 grid of numbers to show examples of training data
 _, axes = plt.subplots(nrows=1, ncols=10, figsize=(20, 3))
 
 # plots the images by converting values between 0 and 1 to grayscale boxes
