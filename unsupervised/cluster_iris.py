@@ -4,7 +4,7 @@ import numpy as np
 from sklearn import datasets
 from sklearn.cluster import KMeans
 
-from utils import axis_3d
+from utils import axis_3d, label_axes_with_actual, scatter_axes
 
 iris_dataset = datasets.load_iris()
 x = iris_dataset.data
@@ -26,7 +26,7 @@ axes = axis_3d(figure=figure_1)
 estimator.fit(x)
 labels = estimator.labels_
 
-axes.scatter(x[:, 3], x[:, 0], x[:, 2], c=labels.astype(float), edgecolor='k')
+scatter_axes(axes, x, y, labels)
 
 # label axes and title
 axes.set_xlabel('Petal width (cm)')
@@ -38,17 +38,9 @@ figure_1.add_axes(axes)
 figure_2 = plt.figure("Correctly Labeled Iris Data", figsize=(8, 6))
 axes = axis_3d(figure=figure_2)
 
-actual_labels = [("Setosa", 0), ("Versicolour", 1), ("Virginica", 2)]
-for name, label in actual_labels:
-    axes.text3D(
-        x[y == label, 3].mean(),
-        x[y == label, 0].mean(),
-        x[y == label, 2].mean() + 2, name,
-        horizontalalignment='center',
-        bbox=dict(alpha=.2, edgecolor='w', facecolor='w')
-    )
+label_axes_with_actual(axes, x, y)
 
-axes.scatter(x[:, 3], x[:, 0], x[:, 2], c=y.astype(float), edgecolor='k')
+scatter_axes(axes, x, y, labels)
 
 axes.set_xlabel('Petal width (cm)')
 axes.set_ylabel('Sepal length (cm)')
