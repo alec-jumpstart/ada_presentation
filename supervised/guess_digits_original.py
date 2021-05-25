@@ -19,17 +19,17 @@ data = digits.images.reshape((n_samples, -1))
 classifier = svm.SVC(gamma=0.001)
 
 # Split data into 50% train and 50% test subsets
-X_train, X_test, y_train, y_test = train_test_split(
+x_train, x_test, y_train, y_test = train_test_split(
     data, digits.target, test_size=0.5, shuffle=False)
 
 # Learn the digits on the train subset
-classifier.fit(X_train, y_train)
+classifier.fit(x_train, y_train)
 
 # Predict the value of the digit on the test subset
-predicted = classifier.predict(X_test)
+predicted = classifier.predict(x_test)
 
 _, axes = plt.subplots(nrows=1, ncols=4, figsize=(10, 3))
-for ax, image, prediction in zip(axes, X_test, predicted):
+for ax, image, prediction in zip(axes, x_test, predicted):
     ax.set_axis_off()
     image = image.reshape(8, 8)
     ax.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
@@ -38,7 +38,7 @@ for ax, image, prediction in zip(axes, X_test, predicted):
 print(f"Classification report for classifier {classifier}:\n"
       f"{metrics.classification_report(y_test, predicted)}\n")
 
-disp = metrics.plot_confusion_matrix(classifier, X_test, y_test)
+disp = metrics.plot_confusion_matrix(classifier, x_test, y_test)
 disp.figure_.suptitle("Confusion Matrix")
 print(f"Confusion matrix:\n{disp.confusion_matrix}")
 
