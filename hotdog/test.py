@@ -2,7 +2,7 @@ import os
 import time
 
 from fastai.imports import plt
-from matplotlib.pyplot import hot
+from matplotlib.pyplot import plt
 
 hotdogs = os.listdir('./data/testing/hotdog')[:10]
 for i in range(5):
